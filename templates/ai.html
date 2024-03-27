@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑白棋 - 人机模式</title>
+    <link rel="stylesheet" href="static/ai_style.css"> <!-- 指向你的CSS文件 -->
+</head>
+<body>
+    <div class="game-container">
+        <div class="board-container">
+            <div id="board"></div> <!-- 棋盘 -->
+        </div>
+        <div class="info-container">
+            <div id="piece-count">黑棋: 2 白棋: 2</div>
+            <div id="ai-move-time">AI本次落子用时: 0秒</div>
+            <div id="ai-total-time">AI总用时: 0秒</div>
+            <div id="status">当前玩家: 黑棋</div>
+            <!-- 可能还有其他信息或按钮 -->
+
+            <div class="buttons-container">
+                <button id="restart-button">重新开始</button>
+                <button onclick="window.location.href='/';">返回主菜单</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="static/ai_script.js"></script> <!-- 指向你的JavaScript文件 -->
+</body>
+</html>

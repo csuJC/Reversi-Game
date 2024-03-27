@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑白棋游戏</title>
+    <style>
+        body {
+            background-color: #fddea5; /* 页面背景色 */
+            font-family: Arial, sans-serif; /* 字体 */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 将内容居中 */
+            justify-content: center;
+            height: 100vh; /* 使内容垂直居中 */
+            margin: 0;
+        }
+        h1 {
+            color: #333; /* 标题颜色 */
+        }
+        button {
+            background-color: #45a049;
+            color: white; /* 按钮文字颜色 */
+            border: none; /* 去除边框 */
+            padding: 10px 20px; /* 按钮内边距 */
+            margin: 10px; /* 外边距 */
+            border-radius: 5px; /* 圆角边框 */
+            cursor: pointer; /* 鼠标悬停时的指针样式 */
+            font-size: 16px; /* 文字大小 */
+            transition: background-color 0.3s; /* 过渡动画 */
+        }
+        button:hover {
+            background-color: #397d35;
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到黑白棋游戏</h1>
+    <h2>与顾仁杰的Mini AlphaGo对战 </h2>
+    <button onclick="window.location.href='/multiplayer';">双人模式</button>
+    <button onclick="window.location.href='/ai';">人机模式</button>
+</body>
+</html>
+

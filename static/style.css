@@ -1,0 +1,108 @@
+/* style.css */
+.game-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-container {
+    flex: 70%; /* 棋盘占据左侧70%的空间 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container {
+    flex: 30%; /* 信息模块占据右侧30%的空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直居中 */
+    align-items: center; /* 水平居中 */
+    padding: 20px; /* 添加一些内边距 */
+    height: 100%; /* 充满容器高度 */
+    overflow-y: auto; /* 如果内容过多，允许滚动 */
+}
+
+.info-container > div {
+    border: 2px solid #4CAF50; /* 给每个信息添加绿色边框 */
+    padding: 10px; /* 在边框内添加一些内边距 */
+    margin: 10px 0; /* 在每个信息模块之间添加垂直间距 */
+    border-radius: 5px; /* 为边框添加圆角 */
+    width: 80%; /* 调整信息模块的宽度，使其不至于过宽 */
+    box-sizing: border-box; /* 确保宽度包括了边框和内边距 */
+    font-size: 18px; /* 增大字体大小 */
+    text-align: center; /* 文本居中 */
+    background-color:#4CAF50;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    border: 5px solid #333; /* 给棋盘添加边框 */
+}
+
+button {
+    width: 120px; /* 直接设置按钮的宽度 */
+    height: 50px; /* 直接设置按钮的高度 */
+    font-size: 16px; /* 字体大小 */
+    background-color: #4CAF50; /* 按钮背景颜色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.buttons-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    gap: 20px; /* 按钮之间的间隙 */
+    border: none!important; /* 确保没有边框 */
+}
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #397d35;
+}
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: green; /* 棋盘背景颜色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.piece {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* 使棋子呈圆形 */
+    background-color: #fff; /* 默认为白色，通过JavaScript改变 */
+}
+
+#status {
+    margin-top: 20px; /* 在棋盘和状态信息之间添加一些间隔 */
+    text-align: center; /* 状态信息文本居中 */
+}
+.legal-move::before {
+    content: '';
+    display: block;
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+body{
+    background-color: #fddea5;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑白棋游戏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+     <div class="game-container">
+        <div class="board-container">
+            <div id="board"></div> <!-- 棋盘 -->
+        </div>
+        <div class="info-container">
+            <div id="piece-count">黑棋: 2 白棋: 2</div>
+
+            <div id="status">当前玩家: 黑棋</div>
+            <!-- 可能还有其他信息或按钮 -->
+
+            <div class="buttons-container">
+                <button onclick="window.location.href='/multiplayer';">重新开始</button>
+                <button onclick="window.location.href='/';">返回主菜单</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
