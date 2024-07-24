@@ -33,7 +33,7 @@ def minimax_make_move(game_state):
         new_game_state = game_state.cloney()
         new_game_state.make_move(*move)
         new_game_state.switch_player()  # 别忘了在移动后切换玩家
-        value = minimax(new_game_state, 3, False)  # 假设搜索深度为3
+        value = minimax(new_game_state, 8, False)  # 假设搜索深度为3
         if value > best_value:
             best_value = value
             best_move = move

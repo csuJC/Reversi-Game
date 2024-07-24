@@ -7,15 +7,15 @@ app = Flask(__name__)
 game = ReversiGame()
 
 
-# def ai_make_move():
-#     legal_moves = game.get_legal_moves(game.current_player)
-#     if not legal_moves:
-#         return False, "No legal moves available for AI"
-#
-#     import random
-#     x, y = random.choice(legal_moves)
-#     success, _ = game.make_move(x, y)
-#     return success, "AI moved"
+def random_make_move(game):
+    legal_moves = game.get_legal_moves(game.current_player)
+    if not legal_moves:
+        return False, "No legal moves available for AI"
+
+    import random
+    x, y = random.choice(legal_moves)
+    success, _ = game.make_move(x, y)
+    return success, "AI moved"
 
 
 @app.route('/')
@@ -85,12 +85,11 @@ def ai_move():
     # 如果是人机模式，并且游戏没有结束，接着让AI执行落子
     if game.game_mode == "ai" and not response_data['gameOver']:
         start_time = time.time()  # 开始计时
-        ai_success, ai_message = minimax_make_move(game)  # 假设这个函数执行AI落子，并返回结果
+        ai_success= mcts_make_move(game)  # 假设这个函数执行AI落子，并返回结果
         end_time = time.time()  # 结束计时
         move_time = end_time - start_time  # 计算AI落子所需时间
         if not ai_success:
-            return jsonify({'success': ai_success,
-                            'message': ai_message}), 400
+            return jsonify({'success': ai_success}), 400
         response_data['aiMove'] = True  # 可选，告诉前端AI已经落子
         response_data['gameOver'] = game.is_game_over()  # 再次检查游戏是否结束
         response_data['moveTime']=move_time

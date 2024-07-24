@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            // if (data.success) {
+            if (data.success) {
 
             updateBoard();  // 更新棋盘状态
             updateLegalMoves();  // 更新合法落子点
@@ -102,24 +102,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ x: x, y: y }),
+                body: JSON.stringify({x: x, y: y}),
             })
-            .then(response => response.json())
-            .then(data => {
-                // if (data.success) {
-                const moveTime = parseFloat(data.moveTime.toFixed(2));  // 确保是数字类型
-                updateBoard();  // 更新棋盘状态
-                updateLegalMoves();  // 更新合法落子点
-                totalTime += moveTime;  // 累加总时间
-                document.getElementById('ai-move-time').innerText = `AI本次落子用时: ${moveTime}秒`;
-                document.getElementById('ai-total-time').innerText = `AI总用时: ${totalTime.toFixed(2)}秒`;
-                 unlockBoard(); // AI落子后解锁棋盘，允许玩家落子
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+                .then(response => response.json())
+                .then(data => {
+                    // if (data.success) {
+                    const moveTime = parseFloat(data.moveTime.toFixed(2));  // 确保是数字类型
+                    updateBoard();  // 更新棋盘状态
+                    updateLegalMoves();  // 更新合法落子点
+                    totalTime += moveTime;  // 累加总时间
+                    document.getElementById('ai-move-time').innerText = `AI本次落子用时: ${moveTime}秒`;
+                    document.getElementById('ai-total-time').innerText = `AI总用时: ${totalTime.toFixed(2)}秒`;
+                    unlockBoard(); // AI落子后解锁棋盘，允许玩家落子
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
 
-        });
-
+                });
+        }else {
+                alert(data.message);  // 落子非法时的提示
+            }
 
         })
         .catch((error) => {

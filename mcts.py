@@ -12,38 +12,34 @@ class TreeNode:
         self.wins = 0
         self.visits = 0
         self.untried_actions = game_state.get_legal_moves(game_state.current_player)
-
     def is_leaf(self):
         return len(self.children) == 0
-
     def select_child(self):
         # UCT选择公式
         c = math.sqrt(2)
         return max(self.children, key=lambda child: child.wins / child.visits + c * math.sqrt(math.log(self.visits) / child.visits))
-
     def expand(self, move, game_state):
         # 扩展新的子节点
         child = TreeNode(game_state=game_state, parent=self, move=move)
         self.untried_actions.remove(move)
         self.children.append(child)
         return child
-
     def backpropagate(self, result):
         # 反向传播结果
         self.visits += 1
         self.wins += result
         if self.parent:
             self.parent.backpropagate(result)
-
     def get_best_move(self):
         # 根据访问次数选择最佳动作
         return max(self.children, key=lambda child: child.visits).move
 
-
 def mcts_make_move(game_state):
     root = TreeNode(game_state=game_state.cloney())
-
-    for _ in range(300):  # 设定模拟次数
+    i=0
+    for _ in range(600):  # 设定模拟次数
+        print(i)
+        i=i+1
         node = root
         state_clone = game_state.cloney()
 
@@ -80,14 +76,7 @@ def mcts_make_move(game_state):
     game_state.board[xx][yy] = game_state.current_player
     game_state.flip_pieces(xx, yy)
     game_state.switch_player()
-    return best_move
+    print('sucessfullt find the best move')
+    print(xx+1,yy+1)
+    return True
 
-def simulate_random_playout(game_state):
-    while not game_state.is_game_over():
-        possible_moves = game_state.get_legal_moves(game_state.current_player)
-        if not possible_moves:
-            break
-        move = random.choice(possible_moves)
-        game_state.make_move(move[0], move[1])
-    # 这里返回模拟游戏的结果，比如使用胜负次数来评价
-    return game_state.evaluate_game()
